@@ -21,9 +21,9 @@ export default function CelebrityList() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-6">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900 mb-1">Celebrity Tracker</h1>
+        <h1 className="text-2xl font-bold text-gray-900 mb-1">Not So Innocent</h1>
         <p className="text-sm text-gray-500">
-          Track and monitor celebrity incidents, lawsuits, and controversies
+          Exposing celebrity incidents, lawsuits, and controversies
         </p>
       </div>
 

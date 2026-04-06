@@ -16,7 +16,7 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 text-lg font-bold text-gray-900 no-underline">
           <Shield className="w-6 h-6 text-indigo-600" />
-          CelebTracker
+          Not So Innocent
         </Link>
         <nav className="flex items-center gap-1">
           <Link to="/" className={linkClass('/')}>
