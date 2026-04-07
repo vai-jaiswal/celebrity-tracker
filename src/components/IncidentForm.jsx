@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import { CATEGORIES, SEVERITIES, STATUSES } from '../data/celebrities';
 
+const inputClass =
+  'w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-xl text-sm text-white placeholder-white/30 focus:outline-none focus:border-y2k-pink/50 focus:shadow-[0_0_15px_rgba(255,45,149,0.15)] transition-all font-body';
+
+const selectClass =
+  'px-3 py-2.5 bg-white/5 border border-white/10 rounded-xl text-sm text-white font-body appearance-none cursor-pointer focus:outline-none focus:border-y2k-pink/50';
+
 export default function IncidentForm({ onSubmit, onCancel }) {
   const [form, setForm] = useState({
     title: '',
@@ -27,9 +33,11 @@ export default function IncidentForm({ onSubmit, onCancel }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-gray-50 border border-gray-200 rounded-lg p-4 space-y-3"
+      className="glass-card rounded-2xl p-5 space-y-4"
     >
-      <h3 className="text-sm font-semibold text-gray-900">New Incident</h3>
+      <h3 className="text-sm font-heading font-bold bg-gradient-to-r from-y2k-pink to-y2k-purple bg-clip-text text-transparent">
+        New Incident
+      </h3>
 
       <input
         name="title"
@@ -37,7 +45,7 @@ export default function IncidentForm({ onSubmit, onCancel }) {
         onChange={handleChange}
         placeholder="Incident title"
         required
-        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        className={inputClass}
       />
 
       <textarea
@@ -47,49 +55,25 @@ export default function IncidentForm({ onSubmit, onCancel }) {
         placeholder="Description..."
         rows={3}
         required
-        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
+        className={`${inputClass} resize-none`}
       />
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <select
-          name="category"
-          value={form.category}
-          onChange={handleChange}
-          className="px-3 py-2 border border-gray-300 rounded-lg text-sm bg-white"
-        >
-          {CATEGORIES.map((c) => (
-            <option key={c}>{c}</option>
-          ))}
+        <select name="category" value={form.category} onChange={handleChange} className={selectClass}>
+          {CATEGORIES.map((c) => (<option key={c}>{c}</option>))}
         </select>
-
-        <select
-          name="severity"
-          value={form.severity}
-          onChange={handleChange}
-          className="px-3 py-2 border border-gray-300 rounded-lg text-sm bg-white"
-        >
-          {SEVERITIES.map((s) => (
-            <option key={s}>{s}</option>
-          ))}
+        <select name="severity" value={form.severity} onChange={handleChange} className={selectClass}>
+          {SEVERITIES.map((s) => (<option key={s}>{s}</option>))}
         </select>
-
-        <select
-          name="status"
-          value={form.status}
-          onChange={handleChange}
-          className="px-3 py-2 border border-gray-300 rounded-lg text-sm bg-white"
-        >
-          {STATUSES.map((s) => (
-            <option key={s}>{s}</option>
-          ))}
+        <select name="status" value={form.status} onChange={handleChange} className={selectClass}>
+          {STATUSES.map((s) => (<option key={s}>{s}</option>))}
         </select>
-
         <input
           type="date"
           name="date"
           value={form.date}
           onChange={handleChange}
-          className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+          className={inputClass}
         />
       </div>
 
@@ -100,24 +84,24 @@ export default function IncidentForm({ onSubmit, onCancel }) {
           onChange={handleChange}
           placeholder="Source URL"
           required
-          className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className={inputClass}
         />
         <input
           name="sourceName"
           value={form.sourceName}
           onChange={handleChange}
           placeholder="Source name (e.g. Reuters)"
-          className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className={inputClass}
         />
       </div>
 
-      <label className="flex items-center gap-2 text-sm text-gray-700">
+      <label className="flex items-center gap-2 text-sm text-white/60 font-body cursor-pointer">
         <input
           type="checkbox"
           name="verified"
           checked={form.verified}
           onChange={handleChange}
-          className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+          className="rounded border-white/20 bg-white/5 text-y2k-pink focus:ring-y2k-pink"
         />
         Mark as verified record
       </label>
@@ -126,13 +110,13 @@ export default function IncidentForm({ onSubmit, onCancel }) {
         <button
           type="button"
           onClick={onCancel}
-          className="px-4 py-2 text-sm text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors"
+          className="px-4 py-2 text-sm text-white/50 border border-white/10 rounded-xl hover:bg-white/5 transition-colors font-body"
         >
           Cancel
         </button>
         <button
           type="submit"
-          className="px-4 py-2 text-sm text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors font-medium"
+          className="neon-btn px-4 py-2 rounded-xl text-sm font-heading font-bold"
         >
           Add Incident
         </button>

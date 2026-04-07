@@ -1,1 +1,299 @@
 @import "tailwindcss";
+
+@theme {
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+  --color-y2k-pink: #ff2d95;
+  --color-y2k-purple: #b24bf3;
+  --color-y2k-cyan: #00e5ff;
+  --color-y2k-lime: #c6f135;
+  --color-y2k-yellow: #ffe156;
+  --color-y2k-orange: #ff6b35;
+  --color-y2k-dark: #1a0a2e;
+  --color-y2k-darker: #0f0520;
+  --color-y2k-card: rgba(255, 255, 255, 0.06);
+  --color-y2k-card-border: rgba(255, 255, 255, 0.1);
+  --color-y2k-glass: rgba(255, 255, 255, 0.08);
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: linear-gradient(135deg, #0f0520 0%, #1a0a2e 30%, #2d1b4e 60%, #1a0a2e 100%);
+  min-height: 100vh;
+  color: #e0d4f5;
+}
+
+/* Starfield background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #ff2d95, transparent),
+    radial-gradient(2px 2px at 40px 70px, #00e5ff, transparent),
+    radial-gradient(1px 1px at 90px 40px, #c6f135, transparent),
+    radial-gradient(1px 1px at 130px 80px, #ff2d95, transparent),
+    radial-gradient(2px 2px at 160px 30px, #b24bf3, transparent),
+    radial-gradient(1px 1px at 200px 60px, #00e5ff, transparent),
+    radial-gradient(2px 2px at 250px 20px, #ffe156, transparent),
+    radial-gradient(1px 1px at 300px 90px, #ff2d95, transparent),
+    radial-gradient(2px 2px at 350px 50px, #b24bf3, transparent),
+    radial-gradient(1px 1px at 400px 70px, #00e5ff, transparent),
+    radial-gradient(2px 2px at 500px 30px, #c6f135, transparent),
+    radial-gradient(1px 1px at 550px 80px, #ff2d95, transparent),
+    radial-gradient(2px 2px at 600px 45px, #b24bf3, transparent),
+    radial-gradient(1px 1px at 680px 25px, #00e5ff, transparent),
+    radial-gradient(2px 2px at 750px 65px, #ffe156, transparent),
+    radial-gradient(1px 1px at 820px 35px, #ff2d95, transparent),
+    radial-gradient(2px 2px at 900px 55px, #c6f135, transparent),
+    radial-gradient(1px 1px at 970px 85px, #b24bf3, transparent);
+  background-size: 1000px 100px;
+  animation: sparkle 8s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+@keyframes sparkle {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100px); }
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Glow text utility */
+.glow-text {
+  text-shadow: 0 0 10px rgba(255, 45, 149, 0.5), 0 0 30px rgba(178, 75, 243, 0.3);
+}
+
+.glow-cyan {
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.5), 0 0 30px rgba(0, 229, 255, 0.3);
+}
+
+/* Glass card effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 45, 149, 0.3);
+  box-shadow: 0 0 20px rgba(255, 45, 149, 0.15), 0 0 40px rgba(178, 75, 243, 0.1);
+}
+
+/* Neon button */
+.neon-btn {
+  background: linear-gradient(135deg, #ff2d95, #b24bf3);
+  color: white;
+  font-weight: 600;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.neon-btn:hover {
+  box-shadow: 0 0 15px rgba(255, 45, 149, 0.5), 0 0 30px rgba(178, 75, 243, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1a0a2e;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#ff2d95, #b24bf3);
+  border-radius: 3px;
+}
+
+/* === CHARACTER DANCE ANIMATIONS === */
+
+/* Head bobbing */
+.head-bob {
+  animation: headBob 0.6s ease-in-out infinite;
+}
+@keyframes headBob {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-3px); }
+}
+
+/* Floating emoji */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Floor shadow pulse */
+.floor-shadow {
+  animation: shadowPulse 0.6s ease-in-out infinite;
+}
+@keyframes shadowPulse {
+  0%, 100% { transform: translateX(-50%) scaleX(1); opacity: 0.6; }
+  50% { transform: translateX(-50%) scaleX(0.7); opacity: 0.3; }
+}
+
+/* === ARM ANIMATIONS === */
+.arm-left {
+  animation: armSwingLeft 0.6s ease-in-out infinite;
+}
+.arm-right {
+  animation: armSwingRight 0.6s ease-in-out infinite;
+}
+@keyframes armSwingLeft {
+  0%, 100% { transform: rotate(25deg); }
+  50% { transform: rotate(-35deg); }
+}
+@keyframes armSwingRight {
+  0%, 100% { transform: rotate(-25deg); }
+  50% { transform: rotate(35deg); }
+}
+
+/* === LEG ANIMATIONS === */
+.leg-left {
+  animation: legKickLeft 0.6s ease-in-out infinite;
+}
+.leg-right {
+  animation: legKickRight 0.6s ease-in-out infinite;
+}
+@keyframes legKickLeft {
+  0%, 100% { transform: rotate(15deg); }
+  50% { transform: rotate(-15deg); }
+}
+@keyframes legKickRight {
+  0%, 100% { transform: rotate(-15deg); }
+  50% { transform: rotate(15deg); }
+}
+
+/* === FULL BODY DANCE STYLES (applied to wrapper) === */
+.dance-bounce .arm-left  { animation: armRaise 1.2s ease-in-out infinite; }
+.dance-bounce .arm-right { animation: armRaise 1.2s ease-in-out infinite 0.6s; }
+.dance-bounce .leg-left  { animation: legKickLeft 1.2s ease-in-out infinite; }
+.dance-bounce .leg-right { animation: legKickRight 1.2s ease-in-out infinite; }
+.dance-bounce .head-bob  { animation: headBob 0.6s ease-in-out infinite; }
+.dance-bounce .floor-shadow { animation: shadowPulse 1.2s ease-in-out infinite; }
+
+@keyframes armRaise {
+  0%, 100% { transform: rotate(10deg); }
+  50% { transform: rotate(-60deg); }
+}
+
+.dance-spin .arm-left  { animation: armWave 0.8s ease-in-out infinite; }
+.dance-spin .arm-right { animation: armWave 0.8s ease-in-out infinite 0.4s; }
+.dance-spin .leg-left  { animation: legKickLeft 0.8s ease-in-out infinite; }
+.dance-spin .leg-right { animation: legKickRight 0.8s ease-in-out infinite; }
+@keyframes armWave {
+  0%, 100% { transform: rotate(5deg); }
+  25% { transform: rotate(-70deg); }
+  75% { transform: rotate(30deg); }
+}
+
+.dance-sway .arm-left  { animation: armSway 2s ease-in-out infinite; }
+.dance-sway .arm-right { animation: armSway 2s ease-in-out infinite 1s; }
+.dance-sway .leg-left  { animation: legSway 2s ease-in-out infinite; }
+.dance-sway .leg-right { animation: legSway 2s ease-in-out infinite 1s; }
+@keyframes armSway {
+  0%, 100% { transform: rotate(20deg); }
+  50% { transform: rotate(-45deg); }
+}
+@keyframes legSway {
+  0%, 100% { transform: rotate(5deg); }
+  50% { transform: rotate(-5deg); }
+}
+
+.dance-jump .arm-left  { animation: armPump 1.5s ease-in-out infinite; }
+.dance-jump .arm-right { animation: armPump 1.5s ease-in-out infinite; }
+@keyframes armPump {
+  0%, 65%, 100% { transform: rotate(15deg); }
+  40% { transform: rotate(-80deg); }
+}
+
+.dance-wobble .arm-left  { animation: armFlail 0.9s ease-in-out infinite; }
+.dance-wobble .arm-right { animation: armFlail 0.9s ease-in-out infinite 0.45s; }
+@keyframes armFlail {
+  0%, 100% { transform: rotate(30deg); }
+  33% { transform: rotate(-60deg); }
+  66% { transform: rotate(45deg); }
+}
+
+.dance-groove .arm-left  { animation: armGroove 0.7s ease-in-out infinite; }
+.dance-groove .arm-right { animation: armGroove 0.7s ease-in-out infinite 0.35s; }
+.dance-groove .leg-left  { animation: legGroove 0.7s ease-in-out infinite; }
+.dance-groove .leg-right { animation: legGroove 0.7s ease-in-out infinite 0.35s; }
+@keyframes armGroove {
+  0%, 100% { transform: rotate(10deg); }
+  50% { transform: rotate(-50deg); }
+}
+@keyframes legGroove {
+  0%, 100% { transform: rotate(10deg); }
+  50% { transform: rotate(-10deg); }
+}
+
+/* Whole-body movement per dance style */
+.dance-bounce {
+  animation: bodyBounce 1.2s ease-in-out infinite;
+}
+.dance-spin {
+  animation: bodySpin 3s linear infinite;
+}
+.dance-sway {
+  animation: bodySway 2s ease-in-out infinite;
+}
+.dance-jump {
+  animation: bodyJump 1.5s ease-in-out infinite;
+}
+.dance-wobble {
+  animation: bodyWobble 1.8s ease-in-out infinite;
+}
+.dance-groove {
+  animation: bodyGroove 1.4s ease-in-out infinite;
+}
+
+@keyframes bodyBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+@keyframes bodySpin {
+  0% { transform: rotate(0deg) translateY(0); }
+  25% { transform: rotate(4deg) translateY(-6px); }
+  50% { transform: rotate(0deg) translateY(0); }
+  75% { transform: rotate(-4deg) translateY(-6px); }
+}
+@keyframes bodySway {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  25% { transform: translateX(10px) rotate(2deg); }
+  75% { transform: translateX(-10px) rotate(-2deg); }
+}
+@keyframes bodyJump {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  15% { transform: translateY(3px) scaleY(0.95); }
+  40% { transform: translateY(-22px) scaleY(1.05); }
+  65% { transform: translateY(0) scaleY(0.97); }
+}
+@keyframes bodyWobble {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-6deg); }
+  75% { transform: rotate(6deg); }
+}
+@keyframes bodyGroove {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-8px) translateX(4px); }
+  75% { transform: translateY(-8px) translateX(-4px); }
+}
+
+/* Spotlight rotation */
+@keyframes spotlight {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}

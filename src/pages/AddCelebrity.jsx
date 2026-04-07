@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Sparkles } from 'lucide-react';
 import { useCelebrities } from '../context/CelebrityContext';
+
+const inputClass =
+  'w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm text-white placeholder-white/30 focus:outline-none focus:border-y2k-pink/50 focus:shadow-[0_0_15px_rgba(255,45,149,0.15)] transition-all font-body';
 
 export default function AddCelebrity() {
   const { addCelebrity } = useCelebrities();
@@ -15,32 +19,41 @@ export default function AddCelebrity() {
   }
 
   return (
-    <div className="max-w-lg mx-auto px-4 py-12">
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Add Celebrity</h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="max-w-lg mx-auto px-4 py-16">
+      <div className="text-center mb-8">
+        <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-y2k-pink to-y2k-purple shadow-[0_0_30px_rgba(255,45,149,0.4)] mb-4">
+          <Sparkles className="w-7 h-7 text-white" />
+        </div>
+        <h1 className="text-3xl font-heading font-extrabold bg-gradient-to-r from-y2k-pink via-y2k-purple to-y2k-cyan bg-clip-text text-transparent">
+          Add Celebrity
+        </h1>
+        <p className="text-white/40 text-sm font-body mt-1">Add someone to the watchlist</p>
+      </div>
+
+      <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-6 space-y-5">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+          <label className="block text-xs font-heading font-bold text-white/50 uppercase tracking-wider mb-2">Name</label>
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
             placeholder="Full name"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className={inputClass}
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Profession</label>
+          <label className="block text-xs font-heading font-bold text-white/50 uppercase tracking-wider mb-2">Profession</label>
           <input
             value={profession}
             onChange={(e) => setProfession(e.target.value)}
             required
             placeholder="e.g. Actor, Musician, Athlete"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className={inputClass}
           />
         </div>
         <button
           type="submit"
-          className="w-full py-2.5 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors"
+          className="neon-btn w-full py-3 rounded-xl text-sm font-heading font-bold"
         >
           Add Celebrity
         </button>

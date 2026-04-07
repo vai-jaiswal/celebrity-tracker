@@ -1,15 +1,15 @@
 const CATEGORY_STYLES = {
-  Criminal: 'bg-red-100 text-red-700 border-red-200',
-  Lawsuit: 'bg-amber-100 text-amber-700 border-amber-200',
-  Accusation: 'bg-orange-100 text-orange-700 border-orange-200',
-  Controversy: 'bg-purple-100 text-purple-700 border-purple-200',
+  Criminal: 'from-red-500 to-y2k-pink text-white shadow-[0_0_8px_rgba(255,45,149,0.3)]',
+  Lawsuit: 'from-y2k-orange to-y2k-yellow text-y2k-darker shadow-[0_0_8px_rgba(255,225,86,0.3)]',
+  Accusation: 'from-orange-400 to-amber-300 text-y2k-darker shadow-[0_0_8px_rgba(255,107,53,0.3)]',
+  Controversy: 'from-y2k-purple to-fuchsia-400 text-white shadow-[0_0_8px_rgba(178,75,243,0.3)]',
 };
 
 export default function CategoryBadge({ category }) {
   return (
     <span
-      className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border ${
-        CATEGORY_STYLES[category] || 'bg-gray-100 text-gray-700 border-gray-200'
+      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-gradient-to-r ${
+        CATEGORY_STYLES[category] || 'from-gray-500 to-gray-400 text-white'
       }`}
     >
       {category}
